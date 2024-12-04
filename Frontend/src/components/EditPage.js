@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 //import axios from "axios";
+import './EditPage.css';
 
 export const EditPage = (props) => {
 
@@ -8,6 +9,7 @@ export const EditPage = (props) => {
 
     const [resp,setresponse] = useState("");
     const [show3,setshow3]=useState(false);
+    const [edited,setedited]=useState(false);
     //const [uploadedFileURL, setUploadedFileURL] = useState(null);
     //const [show,setshow]=useState(false);
 
@@ -18,7 +20,7 @@ export const EditPage = (props) => {
 
    
 
-    function clhandler(){
+    async function clhandler(){
 
 
        if(f==="" || isurl===false)
@@ -58,7 +60,13 @@ export const EditPage = (props) => {
             }
           };
 
-      GetR();
+      await GetR();
+
+      alert("File converted to word successfully");
+
+      setedited(true);
+
+
 
 
     }
@@ -72,16 +80,22 @@ export const EditPage = (props) => {
 
     return(
         <div>
-        <div>
-            EditPage
+        <main>
+        <div className="editheader">
+            EDIT FILE
         </div>
 
-         <button onClick={clhandler}>Click to Edit and Convert!!</button>
-         <button onClick={edithandler}>Click to view the editable word file</button>
+          <div className="buttonstyle">
+          <button className="b" onClick={clhandler}>CLICK TO EDIT AND CONVERT</button>
+          {edited && <button className="b" onClick={edithandler}>DOWNLOAD THE WORD FILE</button>}
+          </div>
+        
          <div>
          {show3 && resp && <iframe src={`${resp}`} title="uploaded document" width="100%" height="500px" />
         }
          </div>
+
+        </main> 
 
         </div>
 

@@ -14,13 +14,13 @@ function App() {
   return (
     <div className="App">
       <div>
-      <header>
-        <nav>
-        <Link to="/">Home</Link>
-        <br/>
-
-        <Link to="/edit">Edit</Link>
-
+      <header className='header'>
+        <div className='pdfnme'>
+          PDF MANIPULATE
+        </div>
+        <nav className='navbar'>
+        <Link className='links' to="/">HOME</Link>
+        <Link className='links' to="/edit">EDIT</Link>
         </nav>
       </header>
 

@@ -1,4 +1,65 @@
-.App {
-  text-align: center;
+.App{
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: aliceblue;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
+  
 }
+
+.header{
+
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.pdfnme{
+  padding-top:5px;
+  font-size: 200%;
+  text-align: center;
+  padding-bottom:20px;
+  border: 2px solid whitesmoke;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 15px;
+  border-top: none;
+  padding-top: 10px;
+  
+  
+}
+
+.navbar{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.links:visited{
+
+  color: white;
+
+}
+
+.links:hover{
+
+  color: blue;
+
+}
+
+.links{
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+
 

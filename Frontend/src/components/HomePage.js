@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import './HomePage.css';
 //import PdfViewerComponent from "./PdfViewerComponent";
+import {ClipLoader} from "react-spinners";
 
 export const HomePage = (props) => {
 
@@ -15,6 +17,7 @@ export const HomePage = (props) => {
     const [show1,setsh]=useState(false);
     const [uploadedFileURL, setUploadedFileURL] = useState(null);
     const [txt,settext]=useState("");
+    const [loading,setloading]=useState(false);
 
     function shandler(){
 
@@ -37,7 +40,7 @@ export const HomePage = (props) => {
 
     }
 
-      function clhandler(){
+      async function clhandler(){
         if(show===true)
         {
             setshow(true);
@@ -48,6 +51,9 @@ export const HomePage = (props) => {
         }
 
         console.log("Calling ClickHnadler!!");
+
+
+        setloading(true);
       
     
 
@@ -80,7 +86,9 @@ export const HomePage = (props) => {
             }
           };
 
-      getPosts();
+      await getPosts();
+
+      setloading(false);
 
 
     }
@@ -93,7 +101,7 @@ export const HomePage = (props) => {
     }
 
 
-    function dishandler(){
+    async function dishandler(){
 
       console.log("Calling dishandler function")
 
@@ -132,7 +140,9 @@ export const HomePage = (props) => {
         }
       };
   
-      getur();
+      await getur();
+
+      alert("URL successfully generated");
 
     }
 
@@ -141,16 +151,21 @@ export const HomePage = (props) => {
     return(
         <div>
         <div>
-            <label htmlFor="pdffile">Enter the pdf</label>
+            <div className="inputfile">
+            <label htmlFor="pdffile">ENTER THE PDF FILE : </label>
             <input id="pdffile" onChange={chhandler} type="file" accept=".pdf ,.docx"/>
-            <br/>
-            <br/>
-            <button onClick={clhandler}>Display the file content !!</button>
-            <button onClick={dishandler}>Click for getting the url</button>
-            <button onClick={shandler}>Click for display</button>
-
+            </div>
+            <div className="buttons">
+            {isurl && <button className="btn" onClick={clhandler}>FIRST PAGE CONTENT</button>}
+            <button className="btn" onClick={dishandler}> GENERATE THE URL</button>
+            {isurl && <button className="btn" onClick={shandler}>DISPLAY THE PDF</button>}
+            </div>
             <div>
-                {show && <div dangerouslySetInnerHTML={{__html: txt}}></div>}
+             {loading ? (
+              <ClipLoader />
+              ) : (
+                      show && <div className="textstyle" dangerouslySetInnerHTML={{ __html: txt }}></div>
+               )}
             </div>
 
             <div>
